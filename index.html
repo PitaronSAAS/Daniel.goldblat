@@ -260,28 +260,40 @@ Select a location above.
 <footer>© 2026 Daniel Goldblat</footer>
 
 <script>
-let lang="en";
+let lang = "en";
 
-function toggleLang(){
-    lang = lang==="en" ? "he" : "en";
+/* FULL LANGUAGE RENDER FUNCTION */
+function renderLanguage(){
     document.querySelectorAll("[data-en]").forEach(el=>{
-        el.innerText = el.getAttribute("data-"+lang);
+        const value = el.getAttribute("data-" + lang);
+        if(value) el.innerText = value;
     });
-    document.body.dir = lang==="he" ? "rtl" : "ltr";
+
+    document.body.dir = lang === "he" ? "rtl" : "ltr";
 }
 
-/* MAP INFO */
+/* TOGGLE */
+function toggleLang(){
+    lang = (lang === "en") ? "he" : "en";
+    renderLanguage();
+}
+
+/* MAP */
 const info = {
     Auschwitz: "Auschwitz-Birkenau was the largest Nazi concentration and extermination camp, symbolizing the industrial scale of the Holocaust.",
-    Treblinka: "Treblinka was one of the most lethal extermination camps, where hundreds of thousands of Jews were murdered.",
-    Majdanek: "Majdanek was a concentration and extermination camp near Lublin, preserved today as a memorial site.",
-    Warsaw: "The Warsaw Ghetto represents the largest Jewish ghetto during WWII and the site of the 1943 uprising."
+    Treblinka: "Treblinka was one of the most lethal extermination camps in occupied Poland.",
+    Majdanek: "Majdanek was both a labor and extermination camp near Lublin, now preserved as a memorial site.",
+    Warsaw: "The Warsaw Ghetto was the largest Jewish ghetto in Nazi-occupied Europe and the site of the 1943 uprising."
 };
 
 function show(place){
     document.getElementById("details").innerText = info[place];
 }
-</script>
 
+/* TESTIMONIAL SAFETY INIT (if you add later) */
+window.addEventListener("DOMContentLoaded", ()=>{
+    renderLanguage();   // 👈 THIS FIXES YOUR ISSUE
+});
+</script>
 </body>
 </html>
