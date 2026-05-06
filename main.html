@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel Goldblat | Holocaust Guide</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    font-family:'Assistant',sans-serif;
+    background:#0f172a;
+    color:#fff;
+    scroll-behavior:smooth;
+}
+
+/* HERO */
+.hero {
+    height:100vh;
+    background:url('https://images.unsplash.com/photo-1549893074-4bc5f96b8d1a?q=80&w=1920') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+.hero::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+}
+.hero-content {
+    position:relative;
+    z-index:2;
+    animation:fadeIn 1.5s ease;
+}
+.hero h1 {
+    font-family:'Playfair Display',serif;
+    font-size:60px;
+}
+.hero h2 {
+    font-weight:300;
+    color:#ddd;
+}
+
+/* BUTTONS */
+.btn {
+    margin:10px;
+    padding:12px 25px;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    transition:.3s;
+}
+.btn-primary {background:#eab308;color:#000;}
+.btn-outline {border:1px solid #fff;background:transparent;color:#fff;}
+.btn:hover {transform:translateY(-2px);}
+
+/* SECTION */
+.section {
+    padding:80px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+/* GLASS CARD */
+.card {
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(20px);
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 40px rgba(0,0,0,.4);
+}
+
+/* GRID */
+.grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+/* IMAGE */
+img.profile {
+    width:260px;
+    border-radius:20px;
+}
+
+/* TIMELINE */
+.timeline div {
+    margin:15px 0;
+    padding-left:15px;
+    border-left:3px solid #eab308;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+    text-align:center;
+    font-style:italic;
+    min-height:80px;
+}
+
+/* HEBREW */
+.hebrew {
+    direction:rtl;
+    text-align:right;
+}
+
+/* TOGGLE */
+.toggle {
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:999;
+}
+
+/* ANIMATION */
+.fade {
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+.fade.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:800px){
+    .grid {grid-template-columns:1fr;}
+    .hero h1 {font-size:40px;}
+}
+</style>
+
+</head>
+
+<body>
+
+<button class="btn btn-outline toggle" onclick="toggleLang()">עברית / English</button>
+
+<!-- HERO -->
+
+<section class="hero">
+<div class="hero-content">
+<h1 data-en="Daniel Goldblat" data-he="דניאל גולדבלט">Daniel Goldblat</h1>
+<h2 data-en="Holocaust Guide" data-he="מדריך שואה">Holocaust Guide</h2>
+
+<a href="#contact"><button class="btn btn-primary">Contact</button></a> <a href="#about"><button class="btn btn-outline">Learn More</button></a>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="section fade">
+<div class="card grid">
+<div>
+<h3 data-en="About" data-he="אודות">About</h3>
+<p data-en="Daniel Goldblat is a highly experienced Holocaust guide leading powerful educational journeys at Yad Vashem and in Poland. His storytelling connects history with personal human experience."
+data-he="דניאל גולדבלט הוא מדריך שואה מנוסה המוביל סיורים משמעותיים ביד ושם ובפולין. דרך סיפור אישי ורגישות, הוא מחבר בין ההיסטוריה לחוויה האנושית.">
+Daniel Goldblat is a highly experienced Holocaust guide...
+</p>
+</div>
+
+<div class="hebrew">
+<h3>תמונה</h3>
+<img src="profile.jpg" class="profile">
+</div>
+</div>
+</section>
+
+<!-- TIMELINE -->
+
+<section class="section fade">
+<div class="card">
+<h3 data-en="Experience" data-he="ניסיון">Experience</h3>
+<div class="timeline">
+<div>Yad Vashem Guided Tours</div>
+<div>Educational Delegations to Poland</div>
+<div>Years of Holocaust Education</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="section fade">
+<div class="card">
+<h3 data-en="Testimonials" data-he="המלצות">Testimonials</h3>
+<p class="testimonial" id="testimonial"></p>
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="section fade">
+<div class="card">
+<h3 data-en="Contact" data-he="יצירת קשר">Contact</h3>
+<p>Email: your@email.com</p>
+<p>Phone: +972XXXXXXXXX</p>
+
+<a href="mailto:your@email.com">
+<button class="btn btn-primary">Email</button>
+</a>
+
+<a href="https://wa.me/972XXXXXXXXX">
+<button class="btn btn-outline">WhatsApp</button>
+</a>
+</div>
+</section>
+
+<script>
+// LANGUAGE TOGGLE
+let lang="en";
+function toggleLang(){
+    lang = lang==="en" ? "he" : "en";
+    document.querySelectorAll("[data-en]").forEach(el=>{
+        el.innerText = el.getAttribute("data-"+lang);
+    });
+    document.body.dir = lang==="he" ? "rtl" : "ltr";
+}
+
+// TESTIMONIAL SLIDER
+const testimonials = [
+"An unforgettable and deeply moving experience.",
+"Daniel brings history to life in a powerful way.",
+"אחד הסיורים המרגשים והמשמעותיים ביותר שחוויתי."
+];
+let i=0;
+function showTestimonial(){
+    document.getElementById("testimonial").innerText = testimonials[i];
+    i = (i+1)%testimonials.length;
+}
+setInterval(showTestimonial,3000);
+showTestimonial();
+
+// SCROLL ANIMATION
+const faders = document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+    faders.forEach(el=>{
+        const top = el.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            el.classList.add('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
