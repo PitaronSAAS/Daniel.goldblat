@@ -8,202 +8,221 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-    margin:0;
-    font-family:'Assistant',sans-serif;
-    background:#050b14;
-    color:#eaf0ff;
+body {
+    margin: 0;
+    font-family: 'Assistant', sans-serif;
+    background: #050b14;
+    color: #eaf0ff;
+    transition: direction 0.3s ease;
 }
 
 /* LANGUAGE TOGGLE */
-.toggle{
-    position:fixed;
-    top:18px;
-    right:18px;
-    z-index:999;
-    background:#0ea5e9;
-    border:none;
-    padding:10px 14px;
-    border-radius:999px;
-    font-weight:700;
-    cursor:pointer;
+.toggle {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 999;
+    background: #0ea5e9;
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.toggle:hover {
+    background: #0284c7;
 }
 
 /* HERO */
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:50px 20px;
-    background:radial-gradient(circle at top,#10324a,#050b14 70%);
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    background: radial-gradient(circle at top, #10324a, #050b14 70%);
 }
 
-.hero-card{
-    max-width:1050px;
-    width:100%;
-    display:grid;
-    grid-template-columns:1fr 1.3fr;
-    gap:60px;
-    align-items:center;
+.hero-card {
+    max-width: 1050px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: center;
 }
 
-.photo{
-    width:100%;
-    max-width:360px;
-    border-radius:18px;
-    border:1px solid #1f3b4d;
-    box-shadow:0 30px 80px rgba(0,0,0,0.65);
+/* SLIDESHOW */
+.slideshow {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 3 / 4;
+    border-radius: 18px;
+    border: 1px solid #1f3b4d;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.65);
+    overflow: hidden;
+    margin: auto;
 }
 
-/* TYPOGRAPHY BIGGER */
-h1{
-    font-family:'Playfair Display',serif;
-    font-size:64px;
-    margin:0;
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
-.subtitle{
-    font-size:20px;
-    margin-top:10px;
-    color:#93c5fd;
+.slide.active {
+    opacity: 1;
 }
 
-.badge{
-    display:inline-block;
-    margin-top:16px;
-    padding:8px 16px;
-    border-radius:999px;
-    font-size:14px;
-    background:rgba(16,185,129,0.08);
-    border:1px solid rgba(52,211,153,0.35);
-    color:#a7f3d0;
+/* TYPOGRAPHY */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    margin: 0;
 }
 
-.buttons{margin-top:25px;}
-
-.btn{
-    padding:12px 20px;
-    border-radius:999px;
-    border:none;
-    cursor:pointer;
-    margin-right:10px;
-    font-size:15px;
+.subtitle {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #93c5fd;
 }
 
-.primary{
-    background:linear-gradient(135deg,#0ea5e9,#10b981);
-    color:#041018;
-    font-weight:700;
+.badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    color: #a7f3d0;
 }
 
-.outline{
-    background:transparent;
-    border:1px solid #334155;
-    color:#eaf0ff;
+.buttons {
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Specific spacing for right-to-left layout */
+[dir="rtl"] .btn {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.primary {
+    background: linear-gradient(135deg, #0ea5e9, #10b981);
+    color: #041018;
+    font-weight: 700;
+}
+
+.primary:hover {
+    background: linear-gradient(135deg, #38bdf8, #34d399);
 }
 
 /* SECTIONS */
-.section{
-    max-width:1050px;
-    margin:auto;
-    padding:80px 20px;
+.section {
+    max-width: 1050px;
+    margin: auto;
+    padding: 80px 20px;
 }
 
-.card{
-    background:linear-gradient(180deg,#0b1220,#0a1624);
-    padding:45px;
-    border-radius:18px;
-    border:1px solid #1f2a3a;
-    box-shadow:0 25px 70px rgba(0,0,0,0.5);
+.card {
+    background: linear-gradient(180deg, #0b1220, #0a1624);
+    padding: 45px;
+    border-radius: 18px;
+    border: 1px solid #1f2a3a;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.5);
 }
 
-h2{
-    font-family:'Playfair Display',serif;
-    font-size:34px;
-    margin-bottom:18px;
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    margin-bottom: 18px;
 }
 
-p{
-    font-size:18px;
-    line-height:1.8;
-    color:#cbd5e1;
+p, ul {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #cbd5e1;
 }
 
-/* MAP */
-.map-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-    margin-top:20px;
-}
-
-.map-point{
-    padding:18px;
-    border-radius:14px;
-    background:#0f1b2d;
-    border:1px solid #1f3b4d;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.map-point:hover{
-    transform:translateY(-4px);
-    border-color:#38bdf8;
-}
-
-.map-details{
-    margin-top:20px;
-    padding:20px;
-    border-radius:14px;
-    background:#0c1626;
-    border:1px solid #1f2a3a;
-    min-height:120px;
-}
-
-/* HEBREW */
-.he{
-    direction:rtl;
-    text-align:right;
+ul {
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 /* FOOTER */
-footer{
-    text-align:center;
-    padding:30px;
-    color:#64748b;
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
 }
 
 /* RESPONSIVE */
-@media(max-width:900px){
-    .hero-card{grid-template-columns:1fr;text-align:center;}
-    h1{font-size:42px;}
+@media(max-width: 900px) {
+    .hero-card { grid-template-columns: 1fr; text-align: center; }
+    h1 { font-size: 42px; }
+    [dir="rtl"] .btn { margin-left: 0; margin-right: 0; margin-bottom: 10px; }
+    .btn { margin-right: 0; margin-bottom: 10px; }
 }
 </style>
 </head>
 
 <body>
 
-<button class="toggle" onclick="toggleLang()">EN / HE</button>
+<button class="toggle" onclick="toggleLang()" id="langBtn">EN / HE / AR</button>
 
 <!-- HERO -->
 <section class="hero">
 <div class="hero-card">
 
-    <div>
-        <img src="bobi.png" class="photo">
+    <!-- IMAGE SLIDESHOW -->
+    <div class="slideshow">
+        <img src="bobi.png" class="slide active" alt="Daniel Goldblat 1">
+        <img src="1000088836.jpg" class="slide" alt="Daniel Goldblat 2">
+        <img src="1000088837.jpg" class="slide" alt="Daniel Goldblat 3">
+        <img src="1000088840.png" class="slide" alt="Daniel Goldblat 4">
     </div>
 
     <div>
-        <h1 data-en="Daniel Goldblat" data-he="דניאל גולדבלט"></h1>
+        <h1 data-en="Daniel Goldblat"
+            data-he="דניאל גולדבלט"
+            data-ar="دانييل غولدبلات"></h1>
 
-        <div class="subtitle" data-en="Holocaust Guide | Yad Vashem & Poland" data-he="מדריך שואה | יד ושם ופולין"></div>
+        <div class="subtitle"
+             data-en="Holocaust Guide | Yad Vashem & Poland"
+             data-he="מדריך שואה | יד ושם ופולין"
+             data-ar="مرشد الهولوكوست | ياد فاشيم وبولندا"></div>
 
-        <div class="badge" data-en="Memory • Education • Guided Historical Journeys" data-he="זיכרון • חינוך • מסעות היסטוריים"></div>
+        <div class="badge"
+             data-en="Memory • Education • Guided Historical Journeys"
+             data-he="זיכרון • חינוך • מסעות היסטוריים"
+             data-ar="الذاكرة • التعليم • رحلات تاريخية إرشادية"></div>
 
         <div class="buttons">
-            <a href="#about"><button class="btn primary" data-en="Explore Work" data-he="המשך">Explore</button></a>
-            <a href="#map"><button class="btn outline" data-en="View Map" data-he="מפה">Map</button></a>
+            <a href="#about" class="btn primary"
+               data-en="Explore Work"
+               data-he="המשך לאודות"
+               data-ar="استكشف العمل">Explore Work</a>
         </div>
     </div>
 
@@ -214,44 +233,62 @@ footer{
 <section id="about" class="section">
 <div class="card">
 
-<h2 data-en="About Daniel" data-he="אודות דניאל"></h2>
+<h2 data-en="About Daniel"
+    data-he="אודות דניאל"
+    data-ar="عن دانييل"></h2>
 
-<p data-en="
-Daniel Goldblat is a Holocaust educator and guide specializing in immersive historical journeys in Israel and Poland.
-He leads groups through sites of profound historical significance, combining historical accuracy with human storytelling that makes the past deeply present and meaningful.
-
-His approach is not only educational — it is experiential, guiding visitors through memory, silence, reflection, and understanding.
+<!-- Text content uses innerHTML via JS so we can include HTML formatting like <ul> and <b> -->
+<div id="about-content"
+data-en="
+<b>Daniel Goldblat</b><br><br>
+Holding a Master's degree in Jewish History, I have worked at Yad Vashem for over 15 years in a variety of educational roles and projects in the field of Holocaust education.<br>
+I specialize in educational guiding in Israel and Poland.<br><br>
+Lectures cover a variety of fields:
+<ul>
+    <li>The Ghetto Phenomenon</li>
+    <li>The Camp Regime</li>
+    <li>Jewish Resistance</li>
+    <li>Righteous Among the Nations</li>
+    <li>The Eichmann Trial in Shaping Memory</li>
+    <li>Israeli Society and the Holocaust</li>
+</ul>
+And more.<br><br>
+In Poland, I guide educational journeys for youth, educators, journalists, and social media influencers.
 "
+
 data-he="
-דניאל גולדבלט הוא מדריך וחוקר שואה המתמחה בהובלת מסעות חינוכיים בישראל ובפולין.
-הוא מוביל קבוצות לאתרים בעלי משמעות היסטורית עמוקה, ומשלב דיוק היסטורי עם סיפור אנושי ההופך את העבר לנוכח ומשמעותי.
+<b>דניאל גולדבלט</b><br><br>
+בעל תואר שני בתולדות עם ישראל, עבדתי ביד ושם מעל 15 שנה במגוון תפקידים ופרויקטים חינוכיים בתחום הוראת השואה.<br>
+מתמחה בהדרכת חינוכיות בישראל ובפולין.<br><br>
+הרצאות במגוון תחומים:
+<ul>
+    <li>תופעת הגטאות</li>
+    <li>משטר המחנות</li>
+    <li>התנגדות יהודית</li>
+    <li>חסידי אומות עולם</li>
+    <li>משפט אייכמן בעיצוב זיכרון</li>
+    <li>החברה הישראלית והשואה</li>
+</ul>
+ועוד.<br><br>
+בפולין מדריך מסעות חינוכיים לנוער, מחנכים, עתונאים ומשפיעני רשת.
+"
 
-גישתו אינה רק לימודית — אלא חווייתית, המובילה את המשתתפים דרך זיכרון, שקט, התבוננות והבנה.
-"></p>
-
-</div>
-</section>
-
-<!-- MAP -->
-<section id="map" class="section">
-<div class="card">
-
-<h2 data-en="Poland Historical Map" data-he="מפת אתרים בפולין"></h2>
-
-<p data-en="Click on a location to learn more about its historical significance."
-   data-he="לחץ על אתר כדי ללמוד על משמעותו ההיסטורית."></p>
-
-<div class="map-grid">
-
-    <div class="map-point" onclick="show('Auschwitz')">Auschwitz-Birkenau</div>
-    <div class="map-point" onclick="show('Treblinka')">Treblinka</div>
-    <div class="map-point" onclick="show('Majdanek')">Majdanek</div>
-    <div class="map-point" onclick="show('Warsaw')">Warsaw Ghetto</div>
-
-</div>
-
-<div class="map-details" id="details">
-Select a location above.
+data-ar="
+<b>دانييل غولدبلات</b><br><br>
+حاصل على درجة الماجستير في التاريخ اليهودي، وعملت في مؤسسة ياد فاشيم لأكثر من 15 عاماً في مجموعة متنوعة من الأدوار والمشاريع التعليمية في مجال التثقيف حول الهولوكوست.<br>
+متخصص في الإرشاد التعليمي في إسرائيل وبولندا.<br><br>
+محاضرات في مجالات متنوعة:
+<ul>
+    <li>ظاهرة الغيتو (الأحياء اليهودية)</li>
+    <li>نظام المعسكرات</li>
+    <li>المقاومة اليهودية</li>
+    <li>الصالحون بين الأمم</li>
+    <li>محاكمة أيخمان في تشكيل الذاكرة</li>
+    <li>المجتمع الإسرائيلي والهولوكوست</li>
+</ul>
+والمزيد.<br><br>
+في بولندا، أقوم بإرشاد رحلات تعليمية للشباب، والمعلمين، والصحفيين، والمؤثرين على وسائل التواصل الاجتماعي.
+">
 </div>
 
 </div>
@@ -264,35 +301,58 @@ let lang = "en";
 
 /* FULL LANGUAGE RENDER FUNCTION */
 function renderLanguage(){
-    document.querySelectorAll("[data-en]").forEach(el=>{
+    const elements = document.querySelectorAll("[data-en]");
+    elements.forEach(el => {
         const value = el.getAttribute("data-" + lang);
-        if(value) el.innerText = value;
+        if(value) {
+            // Using innerHTML to support the list items inside the "About" section
+            el.innerHTML = value;
+        }
     });
 
-    document.body.dir = lang === "he" ? "rtl" : "ltr";
+    // Update document direction and lang attribute based on chosen language
+    if(lang === "he" || lang === "ar") {
+        document.body.dir = "rtl";
+    } else {
+        document.body.dir = "ltr";
+    }
+    document.documentElement.lang = lang;
+
+    // Update Button Text to show current language sequence
+    const btn = document.getElementById('langBtn');
+    if(lang === "en") btn.innerText = "EN / עב / ع";
+    if(lang === "he") btn.innerText = "עב / ع / EN";
+    if(lang === "ar") btn.innerText = "ع / EN / עב";
 }
 
-/* TOGGLE */
+/* TOGGLE: Cycles between English -> Hebrew -> Arabic */
 function toggleLang(){
-    lang = (lang === "en") ? "he" : "en";
+    if (lang === "en") {
+        lang = "he";
+    } else if (lang === "he") {
+        lang = "ar";
+    } else {
+        lang = "en";
+    }
     renderLanguage();
 }
 
-/* MAP */
-const info = {
-    Auschwitz: "Auschwitz-Birkenau was the largest Nazi concentration and extermination camp, symbolizing the industrial scale of the Holocaust.",
-    Treblinka: "Treblinka was one of the most lethal extermination camps in occupied Poland.",
-    Majdanek: "Majdanek was both a labor and extermination camp near Lublin, now preserved as a memorial site.",
-    Warsaw: "The Warsaw Ghetto was the largest Jewish ghetto in Nazi-occupied Europe and the site of the 1943 uprising."
-};
+/* IMAGE SLIDESHOW FUNCTIONALITY */
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
 
-function show(place){
-    document.getElementById("details").innerText = info[place];
+function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
 }
 
-/* TESTIMONIAL SAFETY INIT (if you add later) */
+// Switch images every 4 seconds
+setInterval(nextSlide, 4000);
+
+/* INITIALIZATION */
 window.addEventListener("DOMContentLoaded", ()=>{
-    renderLanguage();   // 👈 THIS FIXES YOUR ISSUE
+    renderLanguage();
 });
 </script>
 </body>
