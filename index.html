@@ -19,21 +19,29 @@ body {
 /* LANGUAGE TOGGLE */
 .toggle {
     position: fixed;
-    top: 18px;
-    right: 18px;
+    top: 20px;
+    right: 20px;
     z-index: 999;
     background: #0ea5e9;
     color: #fff;
     border: none;
-    padding: 10px 14px;
+    padding: 12px 18px;
     border-radius: 999px;
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    transition: background 0.3s, transform 0.2s;
 }
 
 .toggle:hover {
     background: #0284c7;
+    transform: translateY(-2px);
+}
+
+[dir="rtl"] .toggle {
+    right: auto;
+    left: 20px;
 }
 
 /* HERO */
@@ -42,16 +50,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px 20px;
-    background: radial-gradient(circle at top, #10324a, #050b14 70%);
+    padding: 60px 20px;
+    background: radial-gradient(circle at top left, #10324a, #050b14 70%);
 }
 
 .hero-card {
-    max-width: 1050px;
+    max-width: 1200px;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 60px;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 70px;
     align-items: center;
 }
 
@@ -59,11 +67,11 @@ body {
 .slideshow {
     position: relative;
     width: 100%;
-    max-width: 360px;
+    max-width: 420px;
     aspect-ratio: 3 / 4;
-    border-radius: 18px;
-    border: 1px solid #1f3b4d;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.65);
+    border-radius: 24px;
+    border: 2px solid #1f3b4d;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.7);
     overflow: hidden;
     margin: auto;
 }
@@ -76,113 +84,197 @@ body {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1.2s ease-in-out;
 }
 
 .slide.active {
     opacity: 1;
 }
 
+/* PROFILE PIC */
+.profile-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0ea5e9;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+}
+
 /* TYPOGRAPHY */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 64px;
+    font-size: 76px;
     margin: 0;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #ffffff, #93c5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-    font-size: 20px;
-    margin-top: 10px;
+    font-size: 26px;
+    margin-top: 15px;
     color: #93c5fd;
+    font-weight: 600;
 }
 
 .badge {
     display: inline-block;
-    margin-top: 16px;
-    padding: 8px 16px;
+    margin-top: 20px;
+    padding: 10px 20px;
     border-radius: 999px;
-    font-size: 14px;
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid rgba(52, 211, 153, 0.35);
+    font-size: 16px;
+    font-weight: 600;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.4);
     color: #a7f3d0;
 }
 
 .buttons {
-    margin-top: 25px;
+    margin-top: 35px;
 }
 
 .btn {
-    padding: 12px 24px;
+    padding: 15px 30px;
     border-radius: 999px;
     border: none;
     cursor: pointer;
-    margin-right: 10px;
-    font-size: 16px;
+    margin-right: 15px;
+    font-size: 18px;
     text-decoration: none;
     display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Specific spacing for right-to-left layout */
 [dir="rtl"] .btn {
     margin-right: 0;
-    margin-left: 10px;
+    margin-left: 15px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
 }
 
 .primary {
     background: linear-gradient(135deg, #0ea5e9, #10b981);
     color: #041018;
     font-weight: 700;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
 }
 
-.primary:hover {
-    background: linear-gradient(135deg, #38bdf8, #34d399);
+.outline {
+    background: transparent;
+    border: 2px solid #334155;
+    color: #eaf0ff;
+    font-weight: 600;
+}
+
+.outline:hover {
+    border-color: #0ea5e9;
+    color: #fff;
 }
 
 /* SECTIONS */
 .section {
-    max-width: 1050px;
+    max-width: 1100px;
     margin: auto;
-    padding: 80px 20px;
+    padding: 100px 20px;
 }
 
 .card {
     background: linear-gradient(180deg, #0b1220, #0a1624);
-    padding: 45px;
-    border-radius: 18px;
+    padding: 60px;
+    border-radius: 24px;
     border: 1px solid #1f2a3a;
-    box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
 }
 
 h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 34px;
-    margin-bottom: 18px;
+    font-size: 48px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #0ea5e9, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 p, ul {
-    font-size: 18px;
-    line-height: 1.8;
+    font-size: 22px;
+    line-height: 1.9;
     color: #cbd5e1;
 }
 
 ul {
-    margin-top: 5px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding-left: 30px;
+}
+
+[dir="rtl"] ul {
+    padding-left: 0;
+    padding-right: 30px;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+/* CONTACT SECTION */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.contact-item {
+    background: #0f1b2d;
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid #1f3b4d;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.contact-item:hover {
+    border-color: #38bdf8;
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.contact-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: #eaf0ff;
+    text-decoration: none;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 30px;
+    padding: 40px;
+    font-size: 18px;
     color: #64748b;
+    border-top: 1px solid #1f2a3a;
 }
 
 /* RESPONSIVE */
-@media(max-width: 900px) {
-    .hero-card { grid-template-columns: 1fr; text-align: center; }
-    h1 { font-size: 42px; }
-    [dir="rtl"] .btn { margin-left: 0; margin-right: 0; margin-bottom: 10px; }
-    .btn { margin-right: 0; margin-bottom: 10px; }
+@media(max-width: 960px) {
+    .hero-card { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .profile-pic { margin: 0 auto 20px auto; display: block; }
+    h1 { font-size: 52px; }
+    h2 { font-size: 38px; }
+    p, ul { font-size: 19px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    [dir="rtl"] .btn { margin-left: 0; margin-right: 0; margin-bottom: 15px; }
+    .btn { margin-right: 0; margin-bottom: 15px; width: 80%; }
 }
 </style>
 </head>
@@ -197,32 +289,38 @@ footer {
 
     <!-- IMAGE SLIDESHOW -->
     <div class="slideshow">
-        <img src="bobi.png" class="slide active" alt="Daniel Goldblat 1">
-        <img src="1000088836.jpg" class="slide" alt="Daniel Goldblat 2">
-        <img src="1000088837.jpg" class="slide" alt="Daniel Goldblat 3">
-        <img src="1000088840.png" class="slide" alt="Daniel Goldblat 4">
+        <img src="1000088836.jpg" class="slide active" alt="Holocaust Education Journey">
+        <img src="1000088837.jpg" class="slide" alt="Guiding in Poland">
+        <img src="1000088840.png" class="slide" alt="Historical Sites">
     </div>
 
     <div>
+        <!-- STATIC PROFILE PICTURE -->
+        <img src="bobi.png" class="profile-pic" alt="Daniel Goldblat Profile">
+
         <h1 data-en="Daniel Goldblat"
             data-he="דניאל גולדבלט"
             data-ar="دانييل غولدبلات"></h1>
 
         <div class="subtitle"
-             data-en="Holocaust Guide | Yad Vashem & Poland"
-             data-he="מדריך שואה | יד ושם ופולין"
-             data-ar="مرشد الهولوكوست | ياد فاشيم وبولندا"></div>
+             data-en="Holocaust Educator & Historical Guide"
+             data-he="מחנך ומדריך היסטורי לחקר השואה"
+             data-ar="مربي ومرشد تاريخي حول الهولوكوست"></div>
 
         <div class="badge"
-             data-en="Memory • Education • Guided Historical Journeys"
+             data-en="Memory • Education • Guided Journeys"
              data-he="זיכרון • חינוך • מסעות היסטוריים"
              data-ar="الذاكرة • التعليم • رحلات تاريخية إرشادية"></div>
 
         <div class="buttons">
             <a href="#about" class="btn primary"
-               data-en="Explore Work"
-               data-he="המשך לאודות"
-               data-ar="استكشف العمل">Explore Work</a>
+               data-en="Read My Story"
+               data-he="קרא את סיפורי"
+               data-ar="اقرأ قصتي">Read My Story</a>
+            <a href="#contact" class="btn outline"
+               data-en="Get in Touch"
+               data-he="צור קשר"
+               data-ar="اتصل بي">Get in Touch</a>
         </div>
     </div>
 
@@ -233,17 +331,15 @@ footer {
 <section id="about" class="section">
 <div class="card">
 
-<h2 data-en="About Daniel"
-    data-he="אודות דניאל"
-    data-ar="عن دانييل"></h2>
+<h2 data-en="About Me"
+    data-he="אודותיי"
+    data-ar="عني"></h2>
 
-<!-- Text content uses innerHTML via JS so we can include HTML formatting like <ul> and <b> -->
 <div id="about-content"
 data-en="
-<b>Daniel Goldblat</b><br><br>
-Holding a Master's degree in Jewish History, I have worked at Yad Vashem for over 15 years in a variety of educational roles and projects in the field of Holocaust education.<br>
-I specialize in educational guiding in Israel and Poland.<br><br>
-Lectures cover a variety of fields:
+My journey into Holocaust education is rooted in a deep commitment to preserving memory and fostering understanding. Holding a Master's degree in Jewish History, I have dedicated over 15 years to Yad Vashem, taking on a variety of pivotal educational roles and projects.<br><br>
+I specialize in guiding immersive, meaningful educational journeys across Israel and Poland, transforming historical sites into powerful classrooms. My approach connects complex historical facts with the profound personal stories of those who lived through the darkest of times.<br><br>
+<b>My lectures cover a variety of fields:</b>
 <ul>
     <li>The Ghetto Phenomenon</li>
     <li>The Camp Regime</li>
@@ -252,32 +348,28 @@ Lectures cover a variety of fields:
     <li>The Eichmann Trial in Shaping Memory</li>
     <li>Israeli Society and the Holocaust</li>
 </ul>
-And more.<br><br>
-In Poland, I guide educational journeys for youth, educators, journalists, and social media influencers.
+In Poland, I lead transformative journeys for youth, educators, journalists, and social media influencers, ensuring the lessons of the past resonate deeply with today's generations.
 "
 
 data-he="
-<b>דניאל גולדבלט</b><br><br>
-בעל תואר שני בתולדות עם ישראל, עבדתי ביד ושם מעל 15 שנה במגוון תפקידים ופרויקטים חינוכיים בתחום הוראת השואה.<br>
-מתמחה בהדרכת חינוכיות בישראל ובפולין.<br><br>
-הרצאות במגוון תחומים:
+מסעי אל חינוך והוראת השואה נטוע במחויבות עמוקה לשימור הזיכרון וקידום הבנה. בעל תואר שני בתולדות עם ישראל, הקדשתי למעלה מ-15 שנה לעבודה ביד ושם, שם הובלתי מגוון רחב של תפקידים ופרויקטים חינוכיים מרכזיים.<br><br>
+אני מתמחה בהדרכת מסעות חינוכיים משמעותיים בישראל ובפולין, והופך אתרי היסטוריה לכיתות לימוד עוצמתיות. גישתי מחברת בין העובדות ההיסטוריות המורכבות לבין הסיפורים האנושיים העמוקים של אלו שחיו בתקופות החשוכות ביותר.<br><br>
+<b>הרצאותיי עוסקות במגוון תחומים:</b>
 <ul>
     <li>תופעת הגטאות</li>
     <li>משטר המחנות</li>
     <li>התנגדות יהודית</li>
     <li>חסידי אומות עולם</li>
-    <li>משפט אייכמן בעיצוב זיכרון</li>
+    <li>משפט אייכמן בעיצוב הזיכרון</li>
     <li>החברה הישראלית והשואה</li>
 </ul>
-ועוד.<br><br>
-בפולין מדריך מסעות חינוכיים לנוער, מחנכים, עתונאים ומשפיעני רשת.
+בפולין, אני מדריך מסעות משני-תודעה לנוער, מחנכים, עיתונאים ומשפיעני רשת, ומבטיח שלקחי העבר יהדהדו בעוצמה גם אצל דורות ההווה.
 "
 
 data-ar="
-<b>دانييل غولدبلات</b><br><br>
-حاصل على درجة الماجستير في التاريخ اليهودي، وعملت في مؤسسة ياد فاشيم لأكثر من 15 عاماً في مجموعة متنوعة من الأدوار والمشاريع التعليمية في مجال التثقيف حول الهولوكوست.<br>
-متخصص في الإرشاد التعليمي في إسرائيل وبولندا.<br><br>
-محاضرات في مجالات متنوعة:
+تنبع رحلتي في التثقيف حول الهولوكوست من التزام عميق بالحفاظ على الذاكرة وتعزيز الفهم. حاصل على درجة الماجستير في التاريخ اليهودي، وقد كرست أكثر من 15 عاماً للعمل في مؤسسة ياد فاشيم، حيث توليت مجموعة متنوعة من الأدوار والمشاريع التعليمية المحورية.<br><br>
+أتخصص في إرشاد رحلات تعليمية هادفة وغامرة في إسرائيل وبولندا، محولاً المواقع التاريخية إلى فصول دراسية قوية. يربط نهجي بين الحقائق التاريخية المعقدة والقصص الشخصية العميقة لأولئك الذين عاشوا في أحلك الأوقات.<br><br>
+<b>تغطي محاضراتي مجالات متنوعة:</b>
 <ul>
     <li>ظاهرة الغيتو (الأحياء اليهودية)</li>
     <li>نظام المعسكرات</li>
@@ -286,11 +378,32 @@ data-ar="
     <li>محاكمة أيخمان في تشكيل الذاكرة</li>
     <li>المجتمع الإسرائيلي والهولوكوست</li>
 </ul>
-والمزيد.<br><br>
-في بولندا، أقوم بإرشاد رحلات تعليمية للشباب، والمعلمين، والصحفيين، والمؤثرين على وسائل التواصل الاجتماعي.
+في بولندا، أقود رحلات تحويلية للشباب، والمعلمين، والصحفيين، والمؤثرين على وسائل التواصل الاجتماعي، لضمان أن تتردد أصداء دروس الماضي بعمق مع أجيال اليوم.
 ">
 </div>
 
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+<div class="card">
+    <h2 data-en="Contact Me" data-he="צור קשר" data-ar="اتصل بي"></h2>
+
+    <p data-en="Feel free to reach out to discuss guided tours, educational projects, or lectures."
+       data-he="מוזמנים ליצור קשר לתיאום סיורים מודרכים, פרויקטים חינוכיים או הרצאות."
+       data-ar="لا تتردد في التواصل لمناقشة الجولات الإرشادية أو المشاريع التعليمية أو المحاضرات."></p>
+
+    <div class="contact-grid">
+        <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <a href="mailto:danielgoldblat79@gmail.com" class="contact-value">danielgoldblat79@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <a href="tel:+972527537896" class="contact-value">052-753-7896</a>
+        </div>
+    </div>
 </div>
 </section>
 
@@ -305,12 +418,10 @@ function renderLanguage(){
     elements.forEach(el => {
         const value = el.getAttribute("data-" + lang);
         if(value) {
-            // Using innerHTML to support the list items inside the "About" section
             el.innerHTML = value;
         }
     });
 
-    // Update document direction and lang attribute based on chosen language
     if(lang === "he" || lang === "ar") {
         document.body.dir = "rtl";
     } else {
@@ -318,7 +429,6 @@ function renderLanguage(){
     }
     document.documentElement.lang = lang;
 
-    // Update Button Text to show current language sequence
     const btn = document.getElementById('langBtn');
     if(lang === "en") btn.innerText = "EN / עב / ع";
     if(lang === "he") btn.innerText = "עב / ع / EN";
@@ -347,8 +457,7 @@ function nextSlide() {
     slides[currentSlide].classList.add('active');
 }
 
-// Switch images every 4 seconds
-setInterval(nextSlide, 4000);
+setInterval(nextSlide, 4500); // Transitions every 4.5 seconds
 
 /* INITIALIZATION */
 window.addEventListener("DOMContentLoaded", ()=>{
